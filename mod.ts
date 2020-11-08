@@ -1,0 +1,1 @@
+export { resize } from './index.ts';
