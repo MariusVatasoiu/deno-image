@@ -1,7 +1,7 @@
-import { Resize } from './resize/resize.js';
+import { Resize } from './lib/resize/resize.js';
 import { encodeJPG, decodeJPG, Image as ImageJPG } from "./deps.ts";
-import { encode as encodePNG, decode as decodePNG } from './decoders/fast-png/index.ts';
-import { IImageData as ImagePNG } from './decoders/fast-png/types.ts';
+import { encode as encodePNG, decode as decodePNG } from './lib/decoders/fast-png/index.ts';
+import { IImageData as ImagePNG } from './lib/decoders/fast-png/types.ts';
 import { mimeType } from './mime-type.ts';
 import type { ResizeOptions } from './types.ts';
 
@@ -40,7 +40,7 @@ function resizeJPG(imgFile: Uint8Array, {width, height}: ResizeOptions): Promise
       const decoded: ImageJPG = decodeJPG(imgFile);
 
       const resized = new Resize(decoded.width, decoded.height, width, height, true, true, false, async (buffer: Uint8Array) => {
-        const image: ImageJPG = {
+        const image: any = {
           width: width,
           height: height,
           data: buffer
