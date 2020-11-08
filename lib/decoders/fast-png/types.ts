@@ -1,7 +1,6 @@
-// import { DeflateFunctionOptions } from 'pako';
 import { IOBuffer } from './iobuffer/IOBuffer.ts';
 
-// export { DeflateFunctionOptions };
+
 declare enum StrategyValues {
   Z_FILTERED = 1,
   Z_HUFFMAN_ONLY = 2,
