@@ -1,8 +1,8 @@
 # deno-image
 
-**deno-image** is a deno module for resizing images (for now).
+> **deno-image** is a deno module for resizing images (for now).
 
-# Usage
+## Usage
 
 ```javascript
 import { resize } from "https://raw.githubusercontent.com/MariusVatasoiu/deno-image/main/mod.ts";
@@ -12,6 +12,32 @@ const img = await resize(Deno.readFileSync("./demo/img.jpg"), {width: 100, heigh
 Deno.writeFileSync('./demo/result.jpg', img);
 ```
 
-# API
+## API
 
-## resize(img, options)
+### resize(img, options)
+
+Returns a `Promise<Uint8Array>` with the resized image.
+
+#### img
+
+Type: `Uint8Array`
+
+An image Uint8Array. Supported formats are `jpg` and `png`.
+
+#### options
+
+Type: `Object`
+
+##### width
+
+Type: `number`
+
+Desired width of the target image.
+
+##### height
+
+Type: `number`
+
+Desired height of the target image.
+
+## Credits
