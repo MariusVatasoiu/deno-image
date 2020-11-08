@@ -32,12 +32,18 @@ Type: `Object`
 
 Type: `number`
 
-Desired width of the target image.
+Desired width of the target image. For lanscape images, `width` has priority, for portrait images, `height` has priority.
 
 ##### height
 
 Type: `number`
 
-Desired height of the target image.
+Desired height of the target image. For lanscape images, `width` has priority, for portrait images, `height` has priority.
+
+##### aspectRaio
+
+Type: `boolean`
+
+Keep aspect ration. Default is `true`.
 
 ## Credits

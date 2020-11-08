@@ -1,10 +1,13 @@
 import {resize } from '../index.ts'; 
 
-const imgJPG1 = await resize(Deno.readFileSync("./demo/input/img.jpg"), {width: 100, height: 100});
-Deno.writeFileSync('./demo/output/result.jpg', imgJPG1);
+const squareJPG = await resize(Deno.readFileSync("./demo/input/square.jpg"), {width: 100, height: 100});
+Deno.writeFileSync('./demo/output/square.jpg', squareJPG);
 
-const imgJPG2 = await resize(Deno.readFileSync("./demo/input/big.jpg"), {width: 100, height: 100});
-Deno.writeFileSync('./demo/output/big.jpg', imgJPG2);
+const landscapeJPG = await resize(Deno.readFileSync("./demo/input/landscape.jpg"), { width: 100, height: 80});
+Deno.writeFileSync('./demo/output/landscape.jpg', landscapeJPG);
 
-const imgPNG = await resize(Deno.readFileSync("./demo/input/img.png"), {width: 100, height: 100});
-Deno.writeFileSync('./demo/output/result.png', imgPNG);
+const portraitJPG = await resize(Deno.readFileSync("./demo/input/portrait.jpg"), {width: 100});
+Deno.writeFileSync('./demo/output/portrait.jpg', portraitJPG);
+
+const squarePNG = await resize(Deno.readFileSync("./demo/input/square.png"), {width: 100, height: 100});
+Deno.writeFileSync('./demo/output/result.png', squarePNG);
