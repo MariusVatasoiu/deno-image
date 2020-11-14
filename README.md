@@ -5,7 +5,7 @@
 ## Usage
 
 ```javascript
-import { resize } from "https://raw.githubusercontent.com/MariusVatasoiu/deno-image/main/mod.ts";
+import { resize } from "https://deno.land/x/deno-image/mod.ts";
 
 const img = await resize(Deno.readFileSync("./demo/img.jpg"), {width: 100, height: 100});
 
@@ -47,3 +47,11 @@ Type: `boolean`
 Keep aspect ration. Default is `true`.
 
 ## Credits
+
+This module uses the following projects:
+
+* [JS Image Resizer](https://github.com/vibster/JS-Image-Resizer)
+
+* [fast-png](https://github.com/image-js/fast-png)
+
+* [jpeg.ts](https://github.com/fakoua/jpeg.ts)
