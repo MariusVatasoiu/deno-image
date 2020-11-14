@@ -48,7 +48,7 @@ Keep aspect ration. Default is `true`.
 
 ## Credits
 
-This module uses the following projects:
+This module uses the following projects with some changes to work with Deno:
 
 * [JS Image Resizer](https://github.com/vibster/JS-Image-Resizer)
 
