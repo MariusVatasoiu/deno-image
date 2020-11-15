@@ -5,7 +5,7 @@
 ## Usage
 
 ```javascript
-import { resize } from "https://deno.land/x/deno-image/mod.ts";
+import { resize } from "https://deno.land/x/deno_image/mod.ts";
 
 const img = await resize(Deno.readFileSync("./demo/img.jpg"), {width: 100, height: 100});
 
@@ -32,13 +32,13 @@ Type: `Object`
 
 Type: `number`
 
-Desired width of the target image. For lanscape images, `width` has priority, for portrait images, `height` has priority.
+Desired width of the target image. For landscape images, `width` has priority, for portrait images, `height` has priority.
 
 ##### height
 
 Type: `number`
 
-Desired height of the target image. For lanscape images, `width` has priority, for portrait images, `height` has priority.
+Desired height of the target image. For landscape images, `width` has priority, for portrait images, `height` has priority.
 
 ##### aspectRaio
 
