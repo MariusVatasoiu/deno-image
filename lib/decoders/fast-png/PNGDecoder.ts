@@ -3,13 +3,14 @@ import { IOBuffer } from './iobuffer/IOBuffer.ts';
 import { Inflate as Inflator } from './pako/index.js';
 
 import { pngSignature, crc } from './common.ts';
-import {
+import type {
   IDecodedPNG,
   DecoderInputType,
   IPNGDecoderOptions,
   PNGDataArray,
   IndexedColors,
   BitDepth,
+  IInflator
 } from './types.ts';
 import {
   ColorType,
@@ -27,7 +28,7 @@ const osIsLittleEndian = uint8[0] === 0xff;
 
 export default class PNGDecoder extends IOBuffer {
   private _checkCrc: boolean;
-  private _inflator: typeof Inflator;
+  private _inflator: IInflator;
   private _png: IDecodedPNG;
   private _end: boolean;
   private _hasPalette: boolean;
@@ -41,7 +42,7 @@ export default class PNGDecoder extends IOBuffer {
     super(data);
     const { checkCrc = false } = options;
     this._checkCrc = checkCrc;
-    this._inflator = new Inflator();
+    this._inflator = <IInflator>new Inflator();
     this._png = {
       width: -1,
       height: -1,

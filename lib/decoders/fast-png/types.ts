@@ -79,3 +79,12 @@ export interface IPNGEncoderOptions {
 }
 
 export type IndexedColors = number[][];
+
+export interface IInflator {
+  result: Uint8Array | Array<any> | string;
+  err: number;
+  msg: string;
+  push: Function;
+  onData: Function;
+  onEnd: Function;
+}

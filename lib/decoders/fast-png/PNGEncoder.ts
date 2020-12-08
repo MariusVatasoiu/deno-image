@@ -101,7 +101,7 @@ export default class PNGEncoder extends IOBuffer {
       }
     }
     const buffer = newData.toArray();
-    const compressed = deflate(buffer, this._zlibOptions);
+    const compressed = <Uint8Array>deflate(buffer, this._zlibOptions);
     this.encodeIDAT(compressed);
   }
 
