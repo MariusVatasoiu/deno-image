@@ -1,14 +1,14 @@
-import PNGDecoder from './PNGDecoder.ts';
-import PNGEncoder from './PNGEncoder.ts';
+import PNGDecoder from "./PNGDecoder.ts";
+import PNGEncoder from "./PNGEncoder.ts";
 import {
   DecoderInputType,
-  IPNGDecoderOptions,
   IDecodedPNG,
   IImageData,
+  IPNGDecoderOptions,
   IPNGEncoderOptions,
-} from './types.ts';
+} from "./types.ts";
 
-export * from './types.ts';
+export * from "./types.ts";
 
 function decodePNG(
   data: DecoderInputType,

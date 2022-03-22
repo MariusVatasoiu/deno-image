@@ -1,26 +1,25 @@
+import { IOBuffer } from "./iobuffer/IOBuffer.ts";
+import { Inflate as Inflator } from "./pako/index.js";
 
-import { IOBuffer } from './iobuffer/IOBuffer.ts';
-import { Inflate as Inflator } from './pako/index.js';
-
-import { pngSignature, crc } from './common.ts';
+import { crc, pngSignature } from "./common.ts";
 import type {
-  IDecodedPNG,
+  BitDepth,
   DecoderInputType,
+  IDecodedPNG,
+  IInflator,
+  IndexedColors,
   IPNGDecoderOptions,
   PNGDataArray,
-  IndexedColors,
-  BitDepth,
-  IInflator
-} from './types.ts';
+} from "./types.ts";
 import {
   ColorType,
   CompressionMethod,
   FilterMethod,
   InterlaceMethod,
-} from './internalTypes.ts';
+} from "./internalTypes.ts";
 
 const empty = new Uint8Array(0);
-const NULL = '\0';
+const NULL = "\0";
 
 const uint16 = new Uint16Array([0x00ff]);
 const uint8 = new Uint8Array(uint16.buffer);
@@ -42,7 +41,7 @@ export default class PNGDecoder extends IOBuffer {
     super(data);
     const { checkCrc = false } = options;
     this._checkCrc = checkCrc;
-    this._inflator = <IInflator>new Inflator();
+    this._inflator = <IInflator> new Inflator();
     this._png = {
       width: -1,
       height: -1,
@@ -90,26 +89,26 @@ export default class PNGDecoder extends IOBuffer {
     const offset = this.offset;
     switch (type) {
       // 11.2 Critical chunks
-      case 'IHDR': // 11.2.2 IHDR Image header
+      case "IHDR": // 11.2.2 IHDR Image header
         this.decodeIHDR();
         break;
-      case 'PLTE': // 11.2.3 PLTE Palette
+      case "PLTE": // 11.2.3 PLTE Palette
         this.decodePLTE(length);
         break;
-      case 'IDAT': // 11.2.4 IDAT Image data
+      case "IDAT": // 11.2.4 IDAT Image data
         this.decodeIDAT(length);
         break;
-      case 'IEND': // 11.2.5 IEND Image trailer
+      case "IEND": // 11.2.5 IEND Image trailer
         this._end = true;
         break;
       // 11.3 Ancillary chunks
-      case 'tRNS': // 11.3.2.1 tRNS Transparency
+      case "tRNS": // 11.3.2.1 tRNS Transparency
         this.decodetRNS(length);
         break;
-      case 'tEXt': // 11.3.4.3 tEXt Textual data
+      case "tEXt": // 11.3.4.3 tEXt Textual data
         this.decodetEXt(length);
         break;
-      case 'pHYs': // 11.3.5.3 pHYs Physical pixel dimensions
+      case "pHYs": // 11.3.5.3 pHYs Physical pixel dimensions
         this.decodepHYs();
         break;
       default:
@@ -229,7 +228,7 @@ export default class PNGDecoder extends IOBuffer {
 
   // https://www.w3.org/TR/PNG/#11tEXt
   private decodetEXt(length: number): void {
-    let keyword = '';
+    let keyword = "";
     let char;
     while ((char = this.readChar()) !== NULL) {
       keyword += char;
@@ -427,13 +426,12 @@ function unfilterPaeth(
       newLine[i] = (currentLine[i] + prevLine[i]) & 0xff;
     }
     for (; i < bytesPerLine; i++) {
-      newLine[i] =
-        (currentLine[i] +
-          paethPredictor(
-            newLine[i - bytesPerPixel],
-            prevLine[i],
-            prevLine[i - bytesPerPixel],
-          )) &
+      newLine[i] = (currentLine[i] +
+        paethPredictor(
+          newLine[i - bytesPerPixel],
+          prevLine[i],
+          prevLine[i - bytesPerPixel],
+        )) &
         0xff;
     }
   }

@@ -1,4 +1,4 @@
-import { decode, encode } from './utf8.ts';
+import { decode, encode } from "./utf8.ts";
 
 const defaultByteLength = 1024 * 8;
 
@@ -48,7 +48,7 @@ export class IOBuffer {
    * @param data - The data to construct the IOBuffer with.
    * If data is a number, it will be the new buffer's length<br>
    * If data is `undefined`, the buffer will be initialized with a default length of 8Kb<br>
-   * If data is an ArrayBuffer, SharedArrayBuffer, an ArrayBufferView (Typed Array) or an IOBuffer instance 
+   * If data is an ArrayBuffer, SharedArrayBuffer, an ArrayBufferView (Typed Array) or an IOBuffer instance
    * a view will be created over the underlying ArrayBuffer.
    * @param options
    */
@@ -57,7 +57,7 @@ export class IOBuffer {
     options: IOBufferOptions = {},
   ) {
     let dataIsGiven = false;
-    if (typeof data === 'number') {
+    if (typeof data === "number") {
       data = new ArrayBuffer(data);
     } else {
       dataIsGiven = true;
@@ -185,7 +185,7 @@ export class IOBuffer {
   public popMark(): this {
     const offset = this._marks.pop();
     if (offset === undefined) {
-      throw new Error('Mark stack empty');
+      throw new Error("Mark stack empty");
     }
     this.seek(offset);
     return this;
@@ -324,7 +324,7 @@ export class IOBuffer {
    * Read `n` 1-byte ASCII characters and move pointer forward by `n` bytes.
    */
   public readChars(n = 1): string {
-    let result = '';
+    let result = "";
     for (let i = 0; i < n; i++) {
       result += this.readChar();
     }

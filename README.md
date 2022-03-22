@@ -7,9 +7,12 @@
 ```javascript
 import { resize } from "https://deno.land/x/deno_image/mod.ts";
 
-const img = await resize(Deno.readFileSync("./demo/img.jpg"), {width: 100, height: 100});
+const img = await resize(Deno.readFileSync("./demo/img.jpg"), {
+  width: 100,
+  height: 100,
+});
 
-Deno.writeFileSync('./demo/result.jpg', img);
+Deno.writeFileSync("./demo/result.jpg", img);
 ```
 
 ## API
@@ -32,13 +35,15 @@ Type: `Object`
 
 Type: `number`
 
-Desired width of the target image. For landscape images, `width` has priority, for portrait images, `height` has priority.
+Desired width of the target image. For landscape images, `width` has priority,
+for portrait images, `height` has priority.
 
 ##### height
 
 Type: `number`
 
-Desired height of the target image. For landscape images, `width` has priority, for portrait images, `height` has priority.
+Desired height of the target image. For landscape images, `width` has priority,
+for portrait images, `height` has priority.
 
 ##### aspectRaio
 
@@ -50,8 +55,8 @@ Keep aspect ration. Default is `true`.
 
 This module uses the following projects with some changes to work with Deno:
 
-* [JS Image Resizer](https://github.com/vibster/JS-Image-Resizer)
+- [JS Image Resizer](https://github.com/vibster/JS-Image-Resizer)
 
-* [fast-png](https://github.com/image-js/fast-png)
+- [fast-png](https://github.com/image-js/fast-png)
 
-* [jpeg.ts](https://github.com/fakoua/jpeg.ts)
+- [jpeg.ts](https://github.com/fakoua/jpeg.ts)

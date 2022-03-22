@@ -1,4 +1,4 @@
-const decoder = new TextDecoder('utf-8');
+const decoder = new TextDecoder("utf-8");
 
 export function decode(bytes: Uint8Array): string {
   return decoder.decode(bytes);

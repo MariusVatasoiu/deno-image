@@ -2,7 +2,7 @@ type ResizeOptions = {
   width?: number;
   height?: number;
   aspectRatio?: boolean;
-}
+};
 
 type DimensionsOptions = {
   originalWidth: number;
@@ -10,6 +10,6 @@ type DimensionsOptions = {
   width?: number;
   height?: number;
   aspectRatio?: boolean;
-}
+};
 
-export type { ResizeOptions, DimensionsOptions };
+export type { DimensionsOptions, ResizeOptions };

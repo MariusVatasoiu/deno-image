@@ -1,5 +1,4 @@
-import { IOBuffer } from './iobuffer/IOBuffer.ts';
-
+import { IOBuffer } from "./iobuffer/IOBuffer.ts";
 
 declare enum StrategyValues {
   Z_FILTERED = 1,
